@@ -70,9 +70,6 @@ function isCnpValid($cnp_input) {
                     }
                     
                 }
-            } else {
-                // daca prima cifra este 0 atunci cnp-ul nu e valid
-                return false;
             }
         }
     }
