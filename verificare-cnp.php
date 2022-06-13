@@ -1,6 +1,4 @@
 <?php
-$cnp = '1970710060028';
-
 function isCnpValid($cnp_input) {
     // verificam daca cnp-ul contine doar cifre
     if (is_numeric($cnp_input)) {
@@ -23,7 +21,7 @@ function isCnpValid($cnp_input) {
                 // verificare pentru cei nascuti dupa 2000 - (presupunem ca anul curent nu are cum sa fie prin 1900)
                 if (!in_array($gender_and_century, $before_2000)) {
                     if ($birth_year > $current_year) {
-                        return 'falseee';
+                        return false;
                     }
                 }
                 
@@ -67,19 +65,17 @@ function isCnpValid($cnp_input) {
                         
                         // daca numarul de control coincide
                         if ((int)$cnp_explode[12] === (int)$control_number) {
-                            return 'trueee';
+                            return true;
                         }
                     }
                     
                 }
             } else {
                 // daca prima cifra este 0 atunci cnp-ul nu e valid
-                return 'falseee';
+                return false;
             }
         }
     }
-    return 'falseee';
+    return false;
 }
-
-echo isCnpValid($cnp);
 ?>
